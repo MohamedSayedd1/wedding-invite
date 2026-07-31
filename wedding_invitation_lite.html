@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0b1424" />
+<title>دعوة زفاف أحمد وسارة</title>
+
+<!-- Fonts: Aref Ruqaa (calligraphic Arabic, for names) + Cairo (clean Arabic body)
+     + Playfair Display (calligraphic English, for names) + Inter (clean English body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ==========================================================
+     CSS VARIABLES — عدّل هنا الهوية البصرية (ألوان وخطوط) بسهولة
+     CSS VARIABLES — edit colors & fonts here for any client
+     ========================================================== */
+  :root {
+    --bg: #0b1424;              /* خلفية أساسية: كحلي غامق (navy) */
+    --bg-soft: #131f36;         /* خلفية الكروت/الأقسام — كحلي أفتح شوية */
+    --gold: #c9a253;            /* اللون الذهبي/النحاسي الأساسي */
+    --gold-soft: rgba(201,162,83,0.35);
+    --text: #f4ede0;            /* لون النص الأساسي على الخلفية الغامقة */
+    --text-dim: rgba(244,237,224,0.62);
+    --font-title: 'Aref Ruqaa', serif;   /* خط الأسماء الكبير (عربي) */
+    --font-title-en: 'Playfair Display', serif; /* خط الأسماء (إنجليزي) */
+    --font-body: 'Cairo', sans-serif;     /* خط النصوص (عربي) */
+    --font-body-en: 'Inter', sans-serif;  /* خط النصوص (إنجليزي) */
+    --radius: 16px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--font-body); line-height: 1.7; overflow-x: hidden;
+  }
+  html[data-lang="en"] body { font-family: var(--font-body-en); }
+  .title-font { font-family: var(--font-title); }
+  html[data-lang="en"] .title-font { font-family: var(--font-title-en); font-style: italic; }
+
+  .container { max-width: 760px; margin: 0 auto; padding: 0 22px; }
+  section { padding: 64px 0; position: relative; }
+  .divider { width: 70px; height: 1px; background: var(--gold); margin: 0 auto 26px; opacity: .7; }
+  .eyebrow { text-align: center; font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .section-heading { text-align: center; font-size: 15px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 36px; }
+
+  /* Scroll reveal — fade-in + slide-up ناعم بدون حركة صاخبة */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ---------- Guest personalization line (?name=...) ---------- */
+  .guest-line { text-align: center; font-size: 13px; color: var(--gold); letter-spacing: .04em; padding: 10px 16px; }
+
+  /* ---------- Top controls (language switch) ---------- */
+  .top-controls { position: fixed; top: 16px; inset-inline-end: 16px; z-index: 50; display: flex; gap: 8px; }
+  .lang-btn { background: rgba(0,0,0,.35); border: 1px solid var(--gold-soft); color: var(--text); font-size: 12px; padding: 7px 12px; border-radius: 999px; cursor: pointer; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+  .lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ---------- 1. HERO / COVER ---------- */
+  .hero {
+    min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; position: relative; padding: 40px 24px;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(201,162,83,.10), transparent 55%),
+      linear-gradient(180deg, var(--bg) 0%, #060b16 100%);
+  }
+  .hero::before, .hero::after {
+    content: ''; position: absolute; inset-inline: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+  }
+  .hero-frame { border: 1px solid var(--gold-soft); border-radius: 4px; padding: 46px 30px; max-width: 480px; position: relative; }
+  .hero-frame::before, .hero-frame::after { content: ''; position: absolute; width: 22px; height: 22px; border: 1px solid var(--gold); opacity: .8; }
+  .hero-frame::before { top: -1px; inset-inline-start: -1px; border-inline-end: none; border-bottom: none; }
+  .hero-frame::after { bottom: -1px; inset-inline-end: -1px; border-inline-start: none; border-top: none; }
+  .hero-eyebrow { font-size: 12px; letter-spacing: .32em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+  .hero-names { font-family: var(--font-title); font-size: clamp(38px, 9vw, 60px); margin: 0 0 14px; }
+  html[data-lang="en"] .hero-names { font-family: var(--font-title-en); font-style: italic; }
+  .hero-amp { color: var(--gold); padding: 0 12px; }
+  .hero-date { font-size: 15px; color: var(--text-dim); letter-spacing: .05em; margin-bottom: 30px; }
+  .btn-gold {
+    display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--gold);
+    border: 1px solid var(--gold); padding: 13px 30px; border-radius: 999px; font-size: 14px; letter-spacing: .05em;
+    cursor: pointer; transition: all .25s ease; font-family: inherit;
+  }
+  .btn-gold:hover { background: var(--gold); color: var(--bg); }
+  .btn-gold.solid { background: var(--gold); color: var(--bg); font-weight: 600; }
+  .btn-gold.solid:hover { opacity: .88; }
+  .scroll-cue { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); font-size: 11px; color: var(--text-dim); letter-spacing: .2em; animation: bob 2.2s ease-in-out infinite; }
+  @keyframes bob { 0%,100%{ opacity:.4; transform: translate(-50%,0);} 50%{ opacity:1; transform: translate(-50%,6px);} }
+
+  /* Gate that hides the rest of the page until "افتح الدعوة" is pressed (light-weight, no heavy graphics) */
+  #invitation-body { max-height: 0; overflow: hidden; opacity: 0; transition: opacity 1s ease; }
+  #invitation-body.open { max-height: none; opacity: 1; }
+
+  /* ---------- 2. COUNTDOWN ---------- */
+  .countdown { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .cd-item { background: var(--bg-soft); border: 1px solid var(--gold-soft); border-radius: var(--radius); padding: 16px 20px; min-width: 76px; text-align: center; }
+  .cd-num { font-size: 30px; font-weight: 700; color: var(--gold); font-variant-numeric: tabular-nums; }
+  .cd-label { font-size: 10.5px; color: var(--text-dim); letter-spacing: .1em; text-transform: uppercase; margin-top: 4px; }
+
+  /* ---------- 3. NAMES + WELCOME ---------- */
+  .names-block { text-align: center; }
+  .names-big { font-family: var(--font-title); font-size: clamp(34px, 8vw, 52px); margin: 6px 0 18px; }
+  html[data-lang="en"] .names-big { font-family: var(--font-title-en); font-style: italic; }
+  .welcome-msg { max-width: 480px; margin: 0 auto; color: var(--text-dim); font-size: 15.5px; }
+
+  /* ---------- 4. EVENT DETAILS ---------- */
+  .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 14px; }
+  .detail-card { background: var(--bg-soft); border: 1px solid var(--gold-soft); border-radius: var(--radius); padding: 20px; text-align: center; }
+  .detail-card svg { color: var(--gold); margin-bottom: 10px; }
+  .detail-card h4 { margin: 0 0 4px; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-dim); font-weight: 600; }
+  .detail-card p { margin: 0; font-size: 15px; }
+
+  /* ---------- 5. TIMELINE ---------- */
+  .timeline { max-width: 420px; margin: 0 auto; position: relative; }
+  .timeline::before { content: ''; position: absolute; top: 6px; bottom: 6px; inset-inline-start: 19px; width: 1px; background: var(--gold-soft); }
+  .tl-row { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 30px; }
+  .tl-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--bg-soft); border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; color: var(--gold); flex-shrink: 0; z-index: 1; }
+  .tl-text h4 { margin: 2px 0 2px; font-size: 16px; }
+  .tl-text span { font-size: 12.5px; color: var(--gold); letter-spacing: .04em; }
+
+  /* ---------- 6. GALLERY ---------- */
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .gallery-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; cursor: pointer; transition: transform .3s ease, opacity .3s ease; display: block; }
+  .gallery-grid img:hover { transform: scale(1.03); opacity: .88; }
+  .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.92); z-index: 100; display: none; align-items: center; justify-content: center; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 82vh; border-radius: 8px; }
+  .lightbox-close { position: absolute; top: 20px; inset-inline-end: 20px; width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.3); color: #fff; cursor: pointer; font-size: 18px; }
+
+  /* ---------- Short message after gallery ---------- */
+  .short-message-section { padding: 30px 0 44px; text-align: center; }
+  .short-message { max-width: 420px; margin: 0 auto; color: var(--text-dim); font-size: 14.5px; font-style: italic; white-space: pre-line; }
+
+  /* ---------- 7. LOCATION ---------- */
+  .map-wrap { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--gold-soft); margin-bottom: 16px; }
+  .map-wrap iframe { width: 100%; height: 260px; border: 0; display: block; filter: grayscale(.25) invert(.92) contrast(.9); }
+  .address-line { text-align: center; color: var(--text-dim); font-size: 14px; margin-bottom: 20px; }
+  .location-actions { display: flex; justify-content: center; }
+
+  /* ---------- 8. MUSIC BUTTON (fixed, floating) ---------- */
+  .music-fab {
+    position: fixed; bottom: 22px; inset-inline-end: 22px; z-index: 40; width: 50px; height: 50px; border-radius: 50%;
+    background: var(--gold); color: var(--bg); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  }
+  .music-fab.playing::after {
+    content: ''; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--gold);
+    animation: ringPulse 2s ease-out infinite;
+  }
+  @keyframes ringPulse { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.5); opacity: 0; } }
+
+  /* ---------- 9. FOOTER ---------- */
+  footer { text-align: center; padding: 50px 24px 70px; border-top: 1px solid var(--gold-soft); }
+  .footer-msg { font-family: var(--font-title); font-size: 22px; margin-bottom: 18px; }
+  html[data-lang="en"] .footer-msg { font-family: var(--font-title-en); font-style: italic; }
+  .whatsapp-share { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #fff; padding: 11px 20px; border-radius: 999px; text-decoration: none; font-size: 14px; }
+
+  @media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 46px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     CONFIG بيانات الدعوة — عدّل كل حاجة من هنا (الأسماء / التاريخ / الصور / المكان)
+     CONFIG — edit every piece of invitation data from this one block
+     ============================================================ -->
+<script>
+  const CONFIG = {
+    groom: { ar: "عمرو", en: "Amr" },
+    bride: { ar: "سارة", en: "Sara" },
+
+    // EDIT: موعد الفرح الفعلي — بصيغة ISO "YYYY-MM-DDTHH:MM:SS"
+    eventDateISO: "2026-11-14T18:30:00",
+
+    venueName: { ar: "قاعة مراسم بالاس", en: "Marasem Palace" },
+    address: { ar: "شارع التسعين، القاهرة الجديدة، مصر", en: "90th Street, New Cairo, Egypt" },
+
+    // EDIT: اسم المكان يُستخدم في رابط الخريطة وزر الاتجاهات — غيّره لاسم قاعتك
+    mapsQuery: "Marasem Palace New Cairo",
+
+    // EDIT: رقم واتساب صاحب الدعوة (اختياري) — سيبه فاضي لمشاركة عامة بدون رقم محدد
+    whatsappPhone: "",
+
+    // EDIT: استبدل روابط الصور دي بصور الفرح الحقيقية (نفس المقاس المربع أفضل)
+    gallery: [
+      "images (1).jpg",
+      "download.jpg",
+      "download (1).jpg",
+      "download (2).jpg",
+      "download (3).jpg",
+      "images.jpg",
+    ],
+
+    // EDIT: فقرات جدول اليوم — أضف/احذف أي فقرة
+    timeline: [
+      { ar: "كتب الكتاب", en: "Katb El-Kitab", time: "5:00 PM", icon: "ring" },
+      { ar: "الاستقبال", en: "Reception", time: "6:00 PM", icon: "door" },
+      { ar: "الحفل", en: "Celebration", time: "7:30 PM", icon: "spark" },
+      { ar: "العشاء", en: "Dinner", time: "9:30 PM", icon: "fork" },
+    ],
+
+    // EDIT: حط هنا رابط مباشر لملف MP3 (لازم ينتهي بـ .mp3 ويكون مرفوع مكان بيسمح بالتشغيل المباشر مثل
+    // Google Drive بصيغة رابط مباشر، أو Dropbox، أو أي استضافة صوت). سيبه فاضي "" علشان يفضل يشتغل
+    // بالنغمة الجاهزة اللي مبنية في الكود من غير أي ملف خارجي.
+    musicUrl: "",
+
+    // EDIT: رسالة قصيرة (سطرين تقريبًا) بتظهر بعد معرض الصور مباشرة
+    shortMessage: {
+      ar: "كل لحظة نعيشها سوا بتفكرنا إن أجمل الحكايات هي اللي بنكتبها احنا الاتنين.\nشكرًا إنكم هتكونوا جزء من هذه الحكاية.",
+      en: "Every moment we share reminds us that the best stories are the ones we write together.\nThank you for being part of ours.",
+    },
+  };
+</script>
+
+<div class="top-controls">
+  <button class="lang-btn" id="langToggle">EN</button>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">&times;</button>
+  <img id="lightboxImg" src="" alt="" />
+</div>
+
+<button class="music-fab" id="musicBtn" title="Music">
+  <svg id="musicIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><line x1="16" y1="9" x2="21" y2="15"/><line x1="21" y1="9" x2="16" y2="15"/></svg>
+</button>
+<!-- لو حطيت رابط MP3 في CONFIG.musicUrl، هيتشغل من هنا بدل النغمة المولّدة بالكود -->
+<audio id="bgMusic" loop preload="none"></audio>
+
+<!-- ============ 1. HERO / COVER ============ -->
+<section class="hero">
+  <div id="guestLine" class="guest-line" style="display:none;"></div>
+  <div class="hero-frame">
+    <div class="hero-eyebrow" data-t="hero_eyebrow">دعوة زفاف</div>
+    <h1 class="hero-names title-font">
+      <span data-t="groom_name">أحمد</span><span class="hero-amp">&amp;</span><span data-t="bride_name">سارة</span>
+    </h1>
+    <div class="hero-date" id="heroDate"></div>
+    <button class="btn-gold solid" id="openInviteBtn" data-t="open_btn">افتح الدعوة</button>
+  </div>
+  <div class="scroll-cue" data-t="scroll_cue">SCROLL</div>
+</section>
+
+<div id="invitation-body">
+
+  <!-- ============ 2. COUNTDOWN ============ -->
+  <section class="container reveal">
+    <div class="eyebrow" data-t="countdown_eyebrow">العد التنازلي</div>
+    <div class="section-heading" data-t="countdown_title">لموعد الفرح</div>
+    <div class="countdown" id="countdown">
+      <div class="cd-item"><div class="cd-num" id="cd-d">00</div><div class="cd-label" data-t="days">أيام</div></div>
+      <div class="cd-item"><div class="cd-num" id="cd-h">00</div><div class="cd-label" data-t="hours">ساعات</div></div>
+      <div class="cd-item"><div class="cd-num" id="cd-m">00</div><div class="cd-label" data-t="minutes">دقائق</div></div>
+      <div class="cd-item"><div class="cd-num" id="cd-s">00</div><div class="cd-label" data-t="seconds">ثواني</div></div>
+    </div>
+  </section>
+
+  <!-- ============ 3. NAMES + WELCOME ============ -->
+  <section class="container reveal names-block">
+    <div class="divider"></div>
+    <h2 class="names-big title-font">
+      <span data-t="groom_name">أحمد</span><span class="hero-amp">&amp;</span><span data-t="bride_name">سارة</span>
+    </h2>
+    <p class="welcome-msg" data-t="welcome_msg">يشرفنا حضوركم لمشاركتنا أسعد لحظات حياتنا</p>
+  </section>
+
+  <!-- ============ 4. EVENT DETAILS ============ -->
+  <section class="container reveal">
+    <div class="section-heading" data-t="details_title">تفاصيل المناسبة</div>
+    <div class="details-grid">
+      <div class="detail-card">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2.5" x2="8" y2="6"/><line x1="16" y1="2.5" x2="16" y2="6"/></svg>
+        <h4 data-t="date_label">التاريخ</h4><p id="detailDate"></p>
+      </div>
+      <div class="detail-card">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <h4 data-t="day_label">اليوم</h4><p id="detailDay"></p>
+      </div>
+      <div class="detail-card">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <h4 data-t="time_label">الوقت</h4><p id="detailTime"></p>
+      </div>
+      <div class="detail-card">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+        <h4 data-t="venue_label">القاعة</h4><p data-t="venue_name">قاعة مراسم بالاس</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. TIMELINE ============ -->
+  <section class="container reveal">
+    <div class="section-heading" data-t="timeline_title">برنامج اليوم</div>
+    <div class="timeline" id="timelineList"></div>
+  </section>
+
+  <!-- ============ 6. GALLERY ============ -->
+  <section class="container reveal">
+    <div class="section-heading" data-t="gallery_title">معرض الصور</div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </section>
+
+  <!-- ============ رسالة قصيرة بعد الصور (CONFIG.shortMessage) ============ -->
+  <section class="container reveal short-message-section">
+    <div class="divider"></div>
+    <p class="short-message" id="shortMessage"></p>
+  </section>
+
+  <!-- ============ 7. LOCATION ============ -->
+  <section class="container reveal">
+    <div class="section-heading" data-t="location_title">الموقع</div>
+    <div class="map-wrap">
+      <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <p class="address-line" data-t="address_text">شارع التسعين، القاهرة الجديدة، مصر</p>
+    <div class="location-actions">
+      <a class="btn-gold" id="directionsBtn" target="_blank" rel="noreferrer" data-t="directions_btn">احصل على الاتجاهات</a>
+    </div>
+  </section>
+
+  <!-- ============ 8. FOOTER ============ -->
+  <footer>
+    <p class="footer-msg title-font" data-t="footer_msg">بحبكم ننتظر فرحتنا معاكم</p>
+    <a class="whatsapp-share" id="whatsappShare" target="_blank" rel="noreferrer">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1s-.7.8-.9 1c-.2.2-.3.2-.6.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.2-.5s0-.4-.1-.5c-.1-.1-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.6 1.1 2.8.1.2 2 3 4.7 4.2a15 15 0 0 0 1.6.6 3.8 3.8 0 0 0 1.7.1c.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3Z"/></svg>
+      <span data-t="whatsapp_share">شارك الدعوة على واتساب</span>
+    </a>
+  </footer>
+
+</div><!-- /#invitation-body -->
+
+<script>
+  /* ==========================================================
+     تفاعلات أساسية — بنربطها الأول وبمعزل عن باقي الكود، عشان لو أي
+     جزء تاني في الصفحة فيه خطأ، زرار "افتح الدعوة" وزرار الموسيقى
+     يفضلوا شغالين على أي حال (مهم جدًا للموبايل).
+     CRITICAL interactions — bound FIRST and in isolation, so even if
+     something else on the page throws an error, the "Open Invitation"
+     and music buttons keep working (important for mobile browsers).
+     ========================================================== */
+  (function bindOpenInvitation() {
+    try {
+      const openBtn = document.getElementById("openInviteBtn");
+      const body = document.getElementById("invitation-body");
+      if (!openBtn || !body) return;
+      openBtn.addEventListener("click", function () {
+        body.classList.add("open");
+        body.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    } catch (err) {
+      console.warn("Open-invitation button failed to bind:", err);
+    }
+  })();
+
+  (function bindMusic() {
+    try {
+      const bgMusicEl = document.getElementById("bgMusic");
+      const musicBtn = document.getElementById("musicBtn");
+      const musicIcon = document.getElementById("musicIcon");
+      if (!bgMusicEl || !musicBtn || !musicIcon) return;
+      const usingRealMp3 = !!(CONFIG.musicUrl && CONFIG.musicUrl.trim());
+      if (usingRealMp3) bgMusicEl.src = CONFIG.musicUrl.trim();
+
+      let audioCtx = null, musicNodes = null, playing = false;
+      function startGeneratedTone() {
+        try {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          const notes = [261.6, 329.6, 392.0, 493.9]; // C4 E4 G4 B4 — soft arpeggio
+          const master = audioCtx.createGain();
+          master.gain.value = 0.05;
+          master.connect(audioCtx.destination);
+          let i = 0;
+          const interval = setInterval(() => {
+            const osc = audioCtx.createOscillator();
+            const g = audioCtx.createGain();
+            osc.type = "sine";
+            osc.frequency.value = notes[i % notes.length];
+            g.gain.setValueAtTime(0, audioCtx.currentTime);
+            g.gain.linearRampToValueAtTime(0.6, audioCtx.currentTime + 0.6);
+            g.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2.2);
+            osc.connect(g); g.connect(master);
+            osc.start(); osc.stop(audioCtx.currentTime + 2.3);
+            i++;
+          }, 1400);
+          musicNodes = { master, interval };
+        } catch (err) {
+          console.warn("Background music unavailable in this browser.", err);
+        }
+      }
+      function stopGeneratedTone() {
+        if (musicNodes) clearInterval(musicNodes.interval);
+        if (audioCtx) audioCtx.close();
+        audioCtx = null; musicNodes = null;
+      }
+
+      musicBtn.addEventListener("click", function () {
+        playing = !playing;
+        musicBtn.classList.toggle("playing", playing);
+        musicIcon.innerHTML = playing
+          ? '<circle cx="6.5" cy="18" r="2.3"/><circle cx="17.5" cy="16" r="2.3"/><path d="M8.8 18V6.5L19.8 4v11.5"/>'
+          : '<path d="M4 9v6h4l5 4V5L8 9H4Z"/><line x1="16" y1="9" x2="21" y2="15"/><line x1="21" y1="9" x2="16" y2="15"/>';
+        if (usingRealMp3) {
+          if (playing) bgMusicEl.play().catch((err) => console.warn("MP3 playback blocked:", err));
+          else bgMusicEl.pause();
+        } else {
+          if (playing) startGeneratedTone(); else stopGeneratedTone();
+        }
+      });
+    } catch (err) {
+      console.warn("Music button failed to bind:", err);
+    }
+  })();
+
+  /* ==========================================================
+     نصوص الترجمة — كل جملة في الموقع عربي/إنجليزي من هنا
+     TEXT — every string in the site, Arabic + English, from here
+     ========================================================== */
+  const TEXT = {
+    ar: {
+      hero_eyebrow: "دعوة زفاف", open_btn: "افتح الدعوة", scroll_cue: "اسحب لأسفل",
+      countdown_eyebrow: "العد التنازلي", countdown_title: "لموعد الفرح",
+      days: "أيام", hours: "ساعات", minutes: "دقائق", seconds: "ثواني",
+      welcome_msg: "يشرفنا حضوركم لمشاركتنا أسعد لحظات حياتنا",
+      details_title: "تفاصيل المناسبة", date_label: "التاريخ", day_label: "اليوم", time_label: "الوقت", venue_label: "القاعة",
+      venue_name: CONFIG.venueName.ar,
+      timeline_title: "برنامج اليوم", gallery_title: "معرض الصور", location_title: "الموقع",
+      address_text: CONFIG.address.ar, directions_btn: "احصل على الاتجاهات",
+      footer_msg: "بحبكم ننتظر فرحتنا معاكم", whatsapp_share: "شارك الدعوة على واتساب",
+      groom_name: CONFIG.groom.ar, bride_name: CONFIG.bride.ar,
+      guest_prefix: "دعوة خاصة لـ", event_ended: "بدأ الاحتفال! 🎉",
+      whatsapp_msg: (guest) => `${guest ? guest + "، " : ""}يشرفنا دعوتكم لحضور حفل زفاف ${CONFIG.groom.ar} و${CONFIG.bride.ar} 💛\n${location.href}`,
+    },
+    en: {
+      hero_eyebrow: "Wedding Invitation", open_btn: "Open Invitation", scroll_cue: "SCROLL",
+      countdown_eyebrow: "Counting down", countdown_title: "to the big day",
+      days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds",
+      welcome_msg: "We would be honored to have you celebrate with us on our special day",
+      details_title: "Event Details", date_label: "Date", day_label: "Day", time_label: "Time", venue_label: "Venue",
+      venue_name: CONFIG.venueName.en,
+      timeline_title: "Schedule of the Day", gallery_title: "Gallery", location_title: "Location",
+      address_text: CONFIG.address.en, directions_btn: "Get Directions",
+      footer_msg: "With love, we can't wait to celebrate with you", whatsapp_share: "Share on WhatsApp",
+      groom_name: CONFIG.groom.en, bride_name: CONFIG.bride.en,
+      guest_prefix: "A special invitation for", event_ended: "The celebration has begun! 🎉",
+      whatsapp_msg: (guest) => `${guest ? guest + ", " : ""}you're warmly invited to ${CONFIG.groom.en} & ${CONFIG.bride.en}'s wedding 💛\n${location.href}`,
+    },
+  };
+
+  let lang = "ar";
+
+  function applyLang() {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    document.documentElement.setAttribute("data-lang", lang);
+    document.getElementById("langToggle").textContent = lang === "ar" ? "EN" : "AR";
+    document.querySelectorAll("[data-t]").forEach((el) => {
+      const key = el.getAttribute("data-t");
+      const val = TEXT[lang][key];
+      if (typeof val === "string") el.textContent = val;
+    });
+    renderDynamic();
+  }
+  document.getElementById("langToggle").addEventListener("click", () => {
+    lang = lang === "ar" ? "en" : "ar";
+    applyLang();
+  });
+
+  /* ---------- Guest personalization via ?name=... ---------- */
+  const params = new URLSearchParams(location.search);
+  const guestName = params.get("name");
+  function renderGuestLine() {
+    const el = document.getElementById("guestLine");
+    if (guestName) {
+      el.style.display = "block";
+      el.textContent = `${TEXT[lang].guest_prefix} ${decodeURIComponent(guestName)}`;
+    } else {
+      el.style.display = "none";
+    }
+  }
+
+  /* ---------- Dynamic date-dependent + config-dependent content ---------- */
+  function renderDynamic() {
+    const eventDate = new Date(CONFIG.eventDateISO);
+    const localeTag = lang === "ar" ? "ar-EG" : "en-US";
+
+    document.getElementById("heroDate").textContent = eventDate.toLocaleDateString(localeTag, { year: "numeric", month: "long", day: "numeric" });
+    document.getElementById("detailDate").textContent = eventDate.toLocaleDateString(localeTag, { year: "numeric", month: "long", day: "numeric" });
+    document.getElementById("detailDay").textContent = eventDate.toLocaleDateString(localeTag, { weekday: "long" });
+    document.getElementById("detailTime").textContent = eventDate.toLocaleTimeString(localeTag, { hour: "2-digit", minute: "2-digit" });
+
+    // Google Maps embed WITHOUT an API key, built from the venue search query
+    const q = encodeURIComponent(CONFIG.mapsQuery);
+    document.getElementById("mapFrame").src = `https://maps.google.com/maps?q=${q}&output=embed`;
+    document.getElementById("directionsBtn").href = `https://www.google.com/maps/dir/?api=1&destination=${q}`;
+
+    // Timeline
+    const icons = {
+      ring: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="14" r="6"/><path d="M9 8l3-5 3 5"/></svg>',
+      door: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="3" width="12" height="18" rx="1"/><circle cx="14" cy="12" r="1"/></svg>',
+      spark: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg>',
+      fork: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3v7a2 2 0 0 0 4 0V3M9 10v11M17 3c-1.5 0-2 1.5-2 3.5S16 11 17 11s2-2 2-4.5S18.5 3 17 3Zm0 8v10"/></svg>',
+    };
+    document.getElementById("timelineList").innerHTML = CONFIG.timeline.map((item) => `
+      <div class="tl-row">
+        <div class="tl-icon">${icons[item.icon] || icons.spark}</div>
+        <div class="tl-text"><h4>${item[lang]}</h4><span>${item.time}</span></div>
+      </div>
+    `).join("");
+
+    // Gallery
+    document.getElementById("galleryGrid").innerHTML = CONFIG.gallery.map((src, i) => `<img src="${src}" data-i="${i}" alt="wedding photo ${i + 1}" loading="lazy" decoding="async" />`).join("");
+    document.querySelectorAll(".gallery-grid img").forEach((img) => {
+      img.addEventListener("click", () => openLightbox(img.src));
+    });
+
+    // Short message after the gallery
+    document.getElementById("shortMessage").textContent = CONFIG.shortMessage[lang];
+
+    // WhatsApp share (uses inviter phone if provided in CONFIG, otherwise generic share)
+    const msg = encodeURIComponent(TEXT[lang].whatsapp_msg(guestName ? decodeURIComponent(guestName) : ""));
+    const phone = CONFIG.whatsappPhone ? CONFIG.whatsappPhone.replace(/[^\d+]/g, "") : "";
+    document.getElementById("whatsappShare").href = `https://wa.me/${phone}?text=${msg}`;
+
+    renderGuestLine();
+  }
+
+  /* ---------- Lightbox ---------- */
+  function openLightbox(src) {
+    document.getElementById("lightboxImg").src = src;
+    document.getElementById("lightbox").classList.add("open");
+  }
+  document.getElementById("lightboxClose").addEventListener("click", () => document.getElementById("lightbox").classList.remove("open"));
+  document.getElementById("lightbox").addEventListener("click", (e) => { if (e.target.id === "lightbox") e.currentTarget.classList.remove("open"); });
+
+  /* ---------- Countdown (live, updates every second) ---------- */
+  function tickCountdown() {
+    const target = new Date(CONFIG.eventDateISO).getTime();
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      document.getElementById("countdown").innerHTML = `<p style="color:var(--gold); font-size:18px;">${TEXT[lang].event_ended}</p>`;
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff / 3600000) % 24);
+    const m = Math.floor((diff / 60000) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+    document.getElementById("cd-d") && (document.getElementById("cd-d").textContent = String(d).padStart(2, "0"));
+    document.getElementById("cd-h") && (document.getElementById("cd-h").textContent = String(h).padStart(2, "0"));
+    document.getElementById("cd-m") && (document.getElementById("cd-m").textContent = String(m).padStart(2, "0"));
+    document.getElementById("cd-s") && (document.getElementById("cd-s").textContent = String(s).padStart(2, "0"));
+  }
+  setInterval(tickCountdown, 1000);
+
+  /* ---------- Scroll reveal (fade-in + slide-up) ---------- */
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  } else {
+    // متصفح قديم مش داعم لـ IntersectionObserver — نظهر كل الأقسام فورًا بدل ما تفضل مخفية
+    document.querySelectorAll(".reveal").forEach((el) => el.classList.add("visible"));
+  }
+
+  /* ---------- Init ---------- */
+  applyLang();
+  tickCountdown();
+</script>
+</body>
+</html>
